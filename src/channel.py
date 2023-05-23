@@ -3,8 +3,6 @@ from googleapiclient.discovery import build
 import json
 
 
-
-
 class Channel:
     """Класс для ютуб-канала"""
     api_key: str = os.getenv('YT_API_KEY')
@@ -21,7 +19,14 @@ class Channel:
         self.video_count = channel_info['items'][0]['statistics']['videoCount']
         self.sub_count = channel_info['items'][0]['statistics']['subscriberCount']
         self.view_count = channel_info['items'][0]['statistics']['viewCount']
-        self.url  = f'https://www.youtube.com/channel/{self.__channel_id}'
+        self.url = f'https://www.youtube.com/channel/{self.__channel_id}'
+
+    def __repr__(self):
+        return f'Channel: {self.title}, Description: {self.description}, Video count: {self.video_count}, Sub count: {self.sub_count}, URL: {self.url}'
+
+    @property
+    def id(self):
+        return f'{self.__channel_id}'
 
     def print_info(self) -> None:
         """Выводит в консоль информацию о канале."""
