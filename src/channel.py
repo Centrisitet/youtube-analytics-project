@@ -24,6 +24,25 @@ class Channel:
     def __repr__(self):
         return f'Channel: {self.title}, Description: {self.description}, Video count: {self.video_count}, Sub count: {self.sub_count}, URL: {self.url}'
 
+    def __str__(self):
+        return f'{self.title} ({self.url})'
+
+    def __add__(self, other):
+        return int(self.sub_count) + int(other.sub_count)
+
+    def __sub__(self, other):
+        return int(self.sub_count) - int(other.sub_count)
+
+    def __lt__(self, other):
+        if self.sub_count < other.sub_count:
+            return True
+        else: return False
+
+    def __le__(self, other):
+        if self.sub_count <= other.sub_count:
+            return True
+        else: return False
+
     @property
     def id(self):
         return f'{self.__channel_id}'
