@@ -34,17 +34,13 @@ class Channel:
         return int(self.sub_count) - int(other.sub_count)
 
     def __lt__(self, other):
-        if self.sub_count < other.sub_count:
-            return True
-        else: return False
+        return self.sub_count < other.sub_count
 
     def __le__(self, other):
-        if self.sub_count <= other.sub_count:
-            return True
-        else: return False
+        return self.sub_count <= other.sub_count
 
     @property
-    def id(self):
+    def channel_id(self):
         return f'{self.__channel_id}'
 
     def print_info(self) -> None:
@@ -63,5 +59,4 @@ class Channel:
 
     @classmethod
     def get_service(cls):
-        api_key = cls.api_key
         return cls.youtube
